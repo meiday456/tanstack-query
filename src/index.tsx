@@ -5,11 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools"
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query"
+
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+    defaultOptions: {
+        // queries: {
+        //     staleTime: Infinity,
+        // }
+    }
+})
 
 root.render(
     <React.StrictMode>
