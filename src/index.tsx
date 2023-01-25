@@ -13,8 +13,11 @@ const root = ReactDOM.createRoot(
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
-            useErrorBoundary : true
+            useErrorBoundary : true,
+            staleTime : 30000,
+            cacheTime : 30000     //300000 5분
         },
+
         mutations : {
             useErrorBoundary : true
         }

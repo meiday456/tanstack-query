@@ -25,6 +25,7 @@ const MutationTest = () => {
             return data
         },
         enabled: true,
+        refetchOnWindowFocus: false
     })
 
     const postCreateMutation = useMutation({
