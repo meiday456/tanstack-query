@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Basic from "./component/Basic";
 import ReFetch from "./component/ReFetch";
+import MutationTest from "./component/MutationTest";
 
 function App() {
 
@@ -9,7 +10,8 @@ function App() {
     return (
         <div className="App">
             {/*<Basic/>*/}
-            <ReFetch/>
+            <MutationTest/>
+            {/*<ReFetch/>*/}
         </div>
 
     );
