@@ -19,7 +19,7 @@ const post = {
     mutation: {
         create: ()=>[...post.allMutation() , 'create'],
         update: ()=>[...post.allMutation() , 'update'],
-        delete: (id:number)=>[...post.allMutation() , 'delete', id]
+        delete: (id:number=0)=>[...post.allMutation() , 'delete', id]
     }
 }
 

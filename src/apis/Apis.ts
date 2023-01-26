@@ -23,6 +23,12 @@ export const getPostInfo = async (id: number): Promise<Post> => {
     return data
 }
 
+export const registerPostInfo = async (info:Post) : Promise<Post>=>{
+    return await axios.post("https://jsonplaceholder.typicode.com/posts",{
+        ...info
+    })
+}
+
 export const putPostInfo = async (post:Post):Promise<Post>=>{
 
     console.debug('api에 받은 post 값', post)

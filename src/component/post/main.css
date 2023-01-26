@@ -1,18 +1,29 @@
 body {
     background-color: #1b1c28;
     --color-black: #0E111B;
-    --color-grey : rgba(255, 255, 255, .05)
+    --color-grey: rgba(255, 255, 255, .05);
+    --color-light-grey: rgba(255, 255, 255, .6)
 }
-input[type=text]{
+
+input[type=text] {
     background-color: #bbbbbb;
     padding: 0 20px;
     border-radius: 4px;
     border: none;
     outline: none;
     font-size: 14px;
+    width: 100%;
+
 }
 
-.btn{
+.block {
+    position: relative;
+    display: block;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.btn {
     height: 16px;
     padding: 0 10px;
     border: none;
@@ -25,6 +36,7 @@ input[type=text]{
     cursor: pointer;
     background-color: #FDC000;
 }
+
 .root {
     height: 720px;
     position: relative;
@@ -42,6 +54,10 @@ input[type=text]{
     box-sizing: border-box;
 }
 
+.management {
+    margin-bottom: 10px;
+}
+
 .management .input_area {
     display: flex;
     height: 50px;
@@ -50,7 +66,12 @@ input[type=text]{
     align-items: center;
 
 }
-
+.management .input_area span{
+    /*width: 50px;*/
+}
+.management .input_area input{
+    max-width: 160px;
+}
 .management .input_area input:first-of-type {
     width: 65px;
 }
@@ -59,7 +80,7 @@ input[type=text]{
 
 }
 
-.mutation-state{
+.mutation-state {
     margin-top: 20px;
     height: 50px;
 }
@@ -69,65 +90,83 @@ input[type=text]{
     font-weight: 300;
     color: var(--color-black);
 }
-.management div p{
+
+.management div p {
     display: inline;
     font-weight: 500;
 }
 
-.list{
+.reload {
+    /*position: absolute;*/
+    /*top : 100px;*/
+    /*right : 50px;*/
+}
+
+.list {
+    margin-top: 10px;
     max-height: 600px;
     overflow: auto;
 }
 
-.list .post-item{
+.list .post-item {
     height: 100px;
     display: flex;
     align-items: center;
     border: 1px solid var(--color-grey);
 }
-.list .post-item input[type=text]{
-    width: 430px;
+
+.list .post-item:hover {
+    background-color: var(--color-light-grey);
+    cursor: pointer;
 }
 
-.list .post-item .id{
+.list .post-item input[type=text] {
+    width: 100%;
+}
+
+.list .post-item .id {
     width: 50px;
 }
-.list .post-item > div:last-child{
-    width : 110px;
+
+.list .post-item > div:last-child {
+    width: 110px;
 }
-.list .post-item .contents{
+
+.list .post-item .contents {
     flex-grow: 1;
 }
-.list .post-item .contents > div{
+
+.list .post-item .contents > div {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 5px;
 }
 
-.list .post-item .contents .box > div{
-    width: 50px;
+.list .post-item .contents .box > div {
+    width: 70px;
 }
 
-.list .post-item .contents div:nth-child(2){
+.list .post-item .contents div:nth-child(2) {
     border-top: 1px solid var(--color-grey);
 }
 
 
-.info{
+.info {
     height: 300px;
 }
 
-.info .line{
+.info .line {
     display: flex;
     justify-content: center;
     margin-top: 10px;
     padding: 10px 20px 10px 20px;
 }
+
 .info .line > div {
     width: 100px;
 }
 
-.info button{
+.info button {
     margin-top: 50px;
 }

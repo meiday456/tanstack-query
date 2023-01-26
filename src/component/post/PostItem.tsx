@@ -1,6 +1,6 @@
 import {Post} from "../../interface/queryTypes";
 import {usePostDeleteMutation, usePostUpdateMutation} from "../../hooks/mutations/postMutations";
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import {useQueryClient} from "@tanstack/react-query";
 import queryKeys from "../../hooks/keys/queryKeys";
 
@@ -16,35 +16,37 @@ const PostItem = ({info}: Props) => {
     const queryClient = useQueryClient()
 
     const updateMutation = usePostUpdateMutation({}, async () => {
-        window.alert("수정요청을 하였으나 placeholder 를 사용한 예제로 실데이터는 변하지않습니다.")
+        window.alert("수정요청을 하였으나 placeholder API 를 사용한 예제로 실데이터는 변하지않습니다.")
         await queryClient.refetchQueries(queryKeys.post.allQuery())
     })
 
-    const updateHandle = () => {
+    const updateHandle = (event:React.MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation()
         if (window.confirm("정말 수정하시겠습니까?")) {
             updateMutation.mutate({...info, title, body})
         }
     }
 
     const deleteMutation = usePostDeleteMutation({}, async () => {
-        window.alert("삭제요청을 하였으나 placeholder 를 사용한 예제로 실데이터는 변하지않습니다.")
+        window.alert("삭제요청을 하였으나 placeholder API 를 사용한 예제로 실데이터는 변하지않습니다.")
         await queryClient.refetchQueries(queryKeys.post.query.lists())
     })
 
-    const deleteHandle = () => {
+    const deleteHandle = (event:React.MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation()
         if (window.confirm("정말 삭제하기겠습니까?")) {
             deleteMutation.mutate(info.id)
         }
     }
 
-
     return (
-        <div className={"post-item"}>
+        <div className={"post-item"} onClick={()=>{console.log('이동실시')}}>
             <div className={"box id"}>{info.id}</div>
             <div className={"contents"}>
                 <div className={"box"}>
                     <div>title :</div>
                     <input type={"text"} defaultValue={title}
+                           onClick={event=>event.stopPropagation()}
                            onChange={(event: ChangeEvent<HTMLInputElement>) => {
                                setTitle(event.target.value)
                            }}
@@ -52,14 +54,15 @@ const PostItem = ({info}: Props) => {
                 <div className={"box"}>
                     <div>body :</div>
                     <input type={"text"} defaultValue={body}
+                           onClick={event=>event.stopPropagation()}
                            onChange={(event: ChangeEvent<HTMLInputElement>) => {
                                setBody(event.target.value)
                            }}
                     /></div>
             </div>
             <div>
-                <button className={"btn"} onClick={updateHandle}>수정</button>
-                <button className={"btn"} onClick={deleteHandle}>삭제</button>
+                <button className={"btn"} onClick={(event)=>updateHandle(event)}>수정</button>
+                <button className={"btn"} onClick={(event)=>deleteHandle(event)}>삭제</button>
             </div>
 
         </div>
