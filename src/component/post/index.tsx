@@ -4,6 +4,8 @@ import Management from "./Management";
 import PostList from "./PostList";
 import PostInfo from "./PostInfo";
 
+import NotFound from "./NotFound"
+
 const PostIndex = () => {
     return (
         <section className={"root"}>
@@ -14,6 +16,7 @@ const PostIndex = () => {
                         <PostList/>
                     </>}/>
                     <Route path={"/info"} element={<PostInfo/>}/>
+                    <Route path="/*" element={<NotFound/>}/>
                 </Routes>
 
             </BrowserRouter>
