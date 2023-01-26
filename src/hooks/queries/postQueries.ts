@@ -13,7 +13,7 @@ const usePostQuery = (options: UseQueryOptions<Post[], AxiosError>={})
     })
 }
 
-const usePostInfoQuery = (options: UseQueryOptions<Post, AxiosError>, id: number)
+const usePostInfoQuery = (options: UseQueryOptions<Post, AxiosError>={}, id: number=0)
     : UseQueryResult<Post, AxiosError> => {
     return useQuery({
         queryKey: [queryKeys.post.query.detail(id)],

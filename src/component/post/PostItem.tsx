@@ -39,8 +39,12 @@ const PostItem = ({info}: Props) => {
         }
     }
 
+    const moveDetail = ()=>{
+        window.location.href = `/info?id=${info.id}`
+    }
+
     return (
-        <div className={"post-item"} onClick={()=>{console.log('이동실시')}}>
+        <div className={"post-item"} onClick={moveDetail}>
             <div className={"box id"}>{info.id}</div>
             <div className={"contents"}>
                 <div className={"box"}>
