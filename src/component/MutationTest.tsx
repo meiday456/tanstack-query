@@ -1,7 +1,7 @@
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {Post} from "../interface/queryTypes";
 import axios from "axios";
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 
 
 interface PostParam {
@@ -37,8 +37,8 @@ const MutationTest = () => {
         }
     })
 
-
     const submitHandle = () => {
+
         if (title && body) {
             postCreateMutation.mutate({title, body})
         }

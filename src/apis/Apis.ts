@@ -1,4 +1,4 @@
-import axios from "axios/index";
+import axios from "axios";
 import {Post, User} from "../interface/queryTypes";
 
 
@@ -20,5 +20,20 @@ export const getPost = async (): Promise<Post[]> => {
 
 export const getPostInfo = async (id: number): Promise<Post> => {
     const {data} = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    return data
+}
+
+export const putPostInfo = async (post:Post):Promise<Post>=>{
+
+    console.debug('api에 받은 post 값', post)
+
+    const {data} = await axios.put(`https://jsonplaceholder.typicode.com/posts/${post.id}`,{
+        ...post
+    })
+    return data
+}
+
+export const deletePostInfo = async (id:number):Promise<{}>=>{
+    const {data} = await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
     return data
 }
