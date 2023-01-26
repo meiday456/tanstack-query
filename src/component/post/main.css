@@ -54,6 +54,7 @@ input[type=text] {
     box-sizing: border-box;
 }
 
+
 .management {
     margin-bottom: 10px;
 }
@@ -96,11 +97,6 @@ input[type=text] {
     font-weight: 500;
 }
 
-.reload {
-    /*position: absolute;*/
-    /*top : 100px;*/
-    /*right : 50px;*/
-}
 
 .list {
     margin-top: 10px;

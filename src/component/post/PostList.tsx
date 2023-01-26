@@ -1,14 +1,13 @@
 import PostItem from "./PostItem";
 import {usePostQuery} from "../../hooks/queries/postQueries";
-import {Post} from "../../interface/queryTypes";
-import {useQueryClient} from "@tanstack/react-query";
-import QueryKeys from "../../hooks/keys/queryKeys";
 
 const PostList = () => {
 
-    const queryClient = useQueryClient();
-    const {isLoading, isFetching, isError, error, data} = usePostQuery()
-
+    const {isLoading, isFetching, isError, error, data} = usePostQuery({
+        refetchOnWindowFocus : false
+    },()=>{
+        // isShowList(true)
+    })
 
     const renderPostItem = () => {
         return data?.map((post) => {
@@ -16,19 +15,10 @@ const PostList = () => {
         })
     }
 
-    const reloadHandle = async()=>{
-        await queryClient.refetchQueries(QueryKeys.post.query.lists())
-    }
-
-
     return (
         // body를 출력하는 섹션
         <>
-            <div className={"block"} style={{textAlign: "end"}}>
-                <button className={"btn reload"}
-                        onClick={reloadHandle}
-                >목록 새로고침</button>
-            </div>
+
             <section className={"area list"}>
 
                 {

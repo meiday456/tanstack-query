@@ -31,8 +31,6 @@ const ReFetch = () => {
             return data
         },
         enabled: true
-        // retry: 2,        //default 3  이 retry의 경우 error 혹은 문제가 발생했을때의 retry 수이다.
-        // staleTime: 3,
     })
 
     if (isFetching) {

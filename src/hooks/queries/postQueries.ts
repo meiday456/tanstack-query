@@ -4,16 +4,18 @@ import {getPost, getPostInfo} from "../../apis/Apis";
 import {Post} from "../../interface/queryTypes";
 import {AxiosError} from "axios";
 
-const usePostQuery = (options: UseQueryOptions<Post[], AxiosError>={})
+const usePostQuery = (options: UseQueryOptions<Post[], AxiosError> = {},
+                      onSuccess : ()=>void = ()=>{})
     : UseQueryResult<Post[], AxiosError> => {
     return useQuery({
         queryKey: queryKeys.post.query.lists(),
         queryFn: () => getPost(),
-        ...options
+        ...options,
+        onSuccess
     })
 }
 
-const usePostInfoQuery = (options: UseQueryOptions<Post, AxiosError>={}, id: number=0)
+const usePostInfoQuery = (options: UseQueryOptions<Post, AxiosError> = {}, id: number = 0)
     : UseQueryResult<Post, AxiosError> => {
     return useQuery({
         queryKey: [queryKeys.post.query.detail(id)],
@@ -23,4 +25,4 @@ const usePostInfoQuery = (options: UseQueryOptions<Post, AxiosError>={}, id: num
 }
 
 
-export {usePostQuery,usePostInfoQuery}
+export {usePostQuery, usePostInfoQuery}
